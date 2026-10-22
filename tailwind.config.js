@@ -4,11 +4,11 @@ export default {
   theme: {
     extend: {
       colors: {
-        "blue-lightt": "#e9f1fa",
+        "aside-menu": "#011633",
       },
       fontFamily: {
         'AdobeRegular': ['AdobeCleanRegular', 'sans-serif'],
-        'AdobeBold': ['AdobeCleanBold', 'sans-serif'],
+        'LatoRegular': ['LatoRegular', 'sans-serif'],
       },
     },
   },

@@ -1,14 +1,18 @@
 import { useState } from 'react'
-import './App.css'
-import Login from './Login.jsx'
+import './assets/css/App.css'
+import Login from './pages/Login.jsx'
+import ClassAlumno from './pages/ClassAlumno.jsx'
+
+import { BrowserRouter, Routes, Route } from "react-router-dom"; 
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-     <Login />
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Login />} />
+        <Route path="/Cursos" element={<ClassAlumno />} />
+      </Routes>
+    </BrowserRouter>
   )
 }
 

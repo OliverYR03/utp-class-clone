@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'AdobeCleanRegular';
+  src: url('../fonts/AdobeClean-Regular.ttf') format("ttf");
+  font-style: normal;
+
+}
+@font-face {
+  font-family: 'AdobeCleanBold';
+  src: url('../fonts/AdobeClean-Bold.ttf');
+  font-style: normal;
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: 'LatoRegular';
+  src: url('../fonts/Lato-Regular.ttf') format("ttf");
+  font-style: normal;
+  font-weight: 400;
+}
