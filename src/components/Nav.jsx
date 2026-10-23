@@ -29,7 +29,7 @@ function Nav() {
           <div className="flex flex-row">
             <span className="text-sm ">Hola, &nbsp;</span>
 
-            <span className="text-sm font-semibold">Usuario</span>
+            <span className="text-sm font-semibold">Upepino</span>
           </div>
 
           <div className="flex flex-row-reverse">

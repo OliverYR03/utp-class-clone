@@ -5,6 +5,8 @@ export default {
     extend: {
       colors: {
         "aside-menu": "#011633",
+        "back-class": "#eff6ff",
+        "gris-semanal": "#161616"
       },
       fontFamily: {
         'AdobeRegular': ['AdobeCleanRegular', 'sans-serif'],
