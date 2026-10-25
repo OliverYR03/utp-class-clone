@@ -15,7 +15,7 @@ function Aside() {
 
       <MenuItems texto="Calendario" icono="calendario" ruta="calendario" />
 
-      <MenuItems texto="Ayuda" icono="ayuda" ruta="ayudsa" />
+      <MenuItems texto="Ayuda" icono="ayuda" ruta="ayuda" />
 
       <MenuItems texto="Configuración" icono="configuracion" ruta="configuracion" />
     </div>

@@ -29,12 +29,12 @@ function ClassAlumno() {
 
          <div className="w-full flex mt-24 h-full">
            <div className=" w-full h-full">
-              <div className="flex flex-col items-center ">
+              <div className="flex flex-col items-center gap-10">
                 <div className="">
                   <Carrousel slides={slides}/>
                 </div>
 
-               <div className="w-full grid grid-cols-3 gap-20">
+               <div className="w-full grid grid-cols-3 gap-10">
                  <div className="col-span-2">
                   <div className="nav ">
                       <nav className="flex flex-row justify-between items-center w-full p-7"> 

@@ -16,13 +16,13 @@ export default function Carrousel({ slides }) {
   return (
     <div className="overflow-hidden relative">
       <div
-        className={`flex transition ease-out duration-40`}
+        className={`flex transition ease-out duration-40 rounded-md`}
         style={{
           transform: `translateX(-${current * 100}%)`,
         }}
       >
         {slides.map((s) => {
-          return <img src={s} />;
+          return <img src={s}/>;
         })}
       </div>
 
@@ -34,8 +34,8 @@ export default function Carrousel({ slides }) {
         </button>
       </div>
 
-      <div className="absolute bottom-0 py-4 flex justify-center gap-3 w-full ">
-        <div className="flex gap-3 bg-gray-700 px-2 items-center justify-center p-0.5 rounded-md">
+      <div className="absolute bottom-0 py-4 flex justify-center gap-3 w-full rounded-sm">
+        <div className="flex gap-1 bg-[#0009] px-1.5 h-4 items-center justify-center  rounded-lg">
          {slides.map((s, i) => {
           return (
             <div
@@ -44,7 +44,7 @@ export default function Carrousel({ slides }) {
               }}
               key={"circle" + i}
               className={`rounded-full w-2 h-2 cursor-pointer ] ${
-                i == current ? "bg-[#195ed3]" : "bg-white"
+                i == current ? "bg-[#195ed3] w-8" : "bg-white"
               }`}
             ></div>
           );

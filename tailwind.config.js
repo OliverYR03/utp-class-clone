@@ -6,7 +6,8 @@ export default {
       colors: {
         "aside-menu": "#011633",
         "back-class": "#eff6ff",
-        "gris-semanal": "#161616"
+        "gris-semanal": "#161616",
+        "cyan-new" : "#0071bf",
       },
       fontFamily: {
         'AdobeRegular': ['AdobeCleanRegular', 'sans-serif'],
