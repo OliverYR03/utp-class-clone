@@ -51,7 +51,7 @@ function ClassAlumno() {
     <div className="min-h-screen bg-back-class">
     <Aside />
 
-    <div className="min-w-0 lg:ml-[88px]">
+    <div className="min-w-0 ">
       <Nav />
 
       <main className="mx-auto w-full max-w-[1328px] px-5 pb-8 pt-3">

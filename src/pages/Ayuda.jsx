@@ -3,15 +3,18 @@ import Nav from '../components/Nav'
 
 function Ayuda() {
   return (
-    <div className="relative flex w-screen bg-back-class h-screen">
+    <div className="relative flex flex-col w-full bg-back-class h-screen ">
+       <div className="min-w-0 w-full">
         <Nav />
+
+       </div>
        
        <div className="flex w-full mx-auto justify-start mt-32 ml-32 mr-32">
           
         <div className="">
                     <Aside />
         </div>
-          <div className="flex flex-col gap-10 w-full">
+          <div className="flex flex-col gap-10 w-full ">
             <nav className='flex w-full justify-start'>
                 <h2 className='font-semibold '>Ayuda</h2>
             </nav>

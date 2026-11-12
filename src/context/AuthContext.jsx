@@ -11,15 +11,16 @@ export const AuthProvider = ({ children }) => {
   const [cargando, setCargando] = useState(true);
 
   const cargarPerfil = async () => {
-    try {
-      const { data } = await AlumnoService.getPerfil();
-      setUsuario(data);
-      return data;
-    } catch {
-      setUsuario(null);
-      return null;
-    }
-  };
+  try {
+    await UsuarioService.getPerfil();
+
+    setUsuario(respuesta.data);
+    return respuesta.data;
+  } catch {
+    setUsuario(null);
+    return null;
+  }
+};
 
   useEffect(() => {
     setOnUnauthorized(() => setUsuario(null));
@@ -31,14 +32,17 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   const login = async (codigo, password) => {
-    await AuthService.login(codigo, password);
-    const perfil = await cargarPerfil();
-    if (!perfil) {
-      AuthService.logout();
-      throw new Error("SIN_ACCESO");
-    }
-    return perfil;
-  };
+  await AuthService.login(codigo, password);
+
+  const perfil = await cargarPerfil();
+
+  if (!perfil) {
+    AuthService.logout();
+    throw new Error("SIN_ACCESO");
+  }
+
+  return perfil;
+};
 
   const logout = () => {
     AuthService.logout();

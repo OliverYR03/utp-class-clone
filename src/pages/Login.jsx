@@ -19,8 +19,32 @@ const handleLogin = async (e) => {
   setError('');
 
   try {
-    await login(codigo, password);
-    navigate('/student/cursos');
+    const resultado = await login(codigo, password);
+    const destinos = {
+      ESTUDIANTE: "/student/cursos",
+      PROFESOR: "/teacher/cursos",
+      ADMIN: "/admin/dashboard",
+    };
+
+    const destino = destinos[resultado.rol];
+
+    console.log("Rol:", resultado.rol);
+    console.log("Destino:", destino);
+
+    if (!destino) {
+      setError("Rol no reconocido.");
+      return;
+    }
+
+    navigate(destino, { replace: true });
+    
+    if (!destino) {
+      setError('Tu cuenta no tiene acceso a esta sección.');
+      return;
+    }
+
+    navigate(destino, {replace: true});
+
   } catch (err) {
     if (err.message === 'SIN_ACCESO') {
       setError('Tu cuenta no tiene acceso a esta sección.');
