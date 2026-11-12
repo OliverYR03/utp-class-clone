@@ -23,7 +23,7 @@ function App() {
             <Route path="ayuda" element={<Ayuda />} />
           </Route>
     
-          <Route path="/profesor" element={<ProtectedRoute allowedRoles={['profesor']}/>}>
+          <Route path="/teacher" element={<ProtectedRoute allowedRoles={['profesor']}/>}>
            {/* <Route path="default" element={<OpcionProfesor />} /> */}
           </Route>
 

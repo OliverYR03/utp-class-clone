@@ -28,22 +28,12 @@ const handleLogin = async (e) => {
 
     const destino = destinos[resultado.rol];
 
-    console.log("Rol:", resultado.rol);
-    console.log("Destino:", destino);
-
     if (!destino) {
       setError("Rol no reconocido.");
       return;
     }
 
     navigate(destino, { replace: true });
-    
-    if (!destino) {
-      setError('Tu cuenta no tiene acceso a esta sección.');
-      return;
-    }
-
-    navigate(destino, {replace: true});
 
   } catch (err) {
     if (err.message === 'SIN_ACCESO') {

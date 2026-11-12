@@ -1,0 +1,23 @@
+$kind: http-request
+name: localhost:8080/login
+description: ""
+url: http://localhost:8080/api/auth/login
+method: POST
+body:
+  type: json
+  content: |-
+    {
+            "codigo":"A26000006",
+            "password": "TuPassword123"
+    }
+auth:
+  type: bearer
+  credentials:
+    token: ""
+settings:
+  protocolVersion: auto
+  strictSSL: false
+  followRedirects: true
+  disableCookies: false
+  maxResponseSize: 52428800
+order: 3000

@@ -1,7 +1,7 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { setOnUnauthorized, tokenStorage } from "../api/axios";
 import AuthService from "../services/AuthService";
-import AlumnoService from "../services/AlumnoService";
+import UsuarioService from "../services/UsuarioService";
 
 const AuthContext = createContext(null);
 export const useAuth = () => useContext(AuthContext);
@@ -12,11 +12,12 @@ export const AuthProvider = ({ children }) => {
 
   const cargarPerfil = async () => {
   try {
-    await UsuarioService.getPerfil();
+    const { data } = await UsuarioService.getPerfil();
 
-    setUsuario(respuesta.data);
-    return respuesta.data;
-  } catch {
+    setUsuario(data);
+    return data;
+  } catch (error) {
+    console.error("Error al cargar el perfil:", error);
     setUsuario(null);
     return null;
   }
