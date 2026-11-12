@@ -22,7 +22,7 @@ export default function Carrousel({ slides }) {
         }}
       >
         {slides.map((s) => {
-          return <img src={s}/>;
+          return <img key={s} src={s} alt="Slide" />;
         })}
       </div>
 

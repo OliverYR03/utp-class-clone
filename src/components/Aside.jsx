@@ -2,7 +2,7 @@ import MenuItems from './Aside/MenuItems'
 
 function Aside() {
   return (
-    <div className="fixed top-0 left-0 w-[88px] h-screen bg-aside-menu box-border flex flex-col">
+    <div className="lg:flex fixed top-0 left-0 w-[88px] h-screen bg-aside-menu box-border hidden flex-col">
 
   <div className="h-[72px] shrink-0 w-full" />
 

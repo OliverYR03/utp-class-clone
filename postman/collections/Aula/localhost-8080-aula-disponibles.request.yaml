@@ -1,0 +1,17 @@
+$kind: http-request
+name: localhost:8080/aula/disponibles
+description: ""
+url: localhost:8080/aula/nodisponibles
+method: GET
+body:
+  type: json
+  content: "{\r
+
+    \    \"tipo\": \"TALLER\",\r
+
+    \    \"codigo\": \"C0501\",\r
+
+    \    \"aforo\": 40\r
+
+    }"
+order: 1000

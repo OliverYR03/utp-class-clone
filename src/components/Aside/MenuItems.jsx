@@ -15,7 +15,7 @@ function MenuItems({texto, icono, ruta}) {
 
     const location = useLocation();
 
-    const esRutaActiva = location.pathname === "/"+ ruta.toLowerCase();
+    const esRutaActiva = location.pathname === "/student/"+ ruta.toLowerCase();
   return (
     <div className={`relative h-20  ${esRutaActiva ? 'bg-white': ''} w-full flex flex-col justify-center items-center gap-1`}>
          {esRutaActiva ? (
