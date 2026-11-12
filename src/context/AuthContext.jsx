@@ -1,7 +1,7 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { setOnUnauthorized, tokenStorage } from "../api/axios";
 import AuthService from "../services/AuthService";
-import AlumnoService from "../services/AlumnoService";
+import UsuarioService from "../services/UsuarioService";
 
 const AuthContext = createContext(null);
 export const useAuth = () => useContext(AuthContext);
@@ -11,15 +11,17 @@ export const AuthProvider = ({ children }) => {
   const [cargando, setCargando] = useState(true);
 
   const cargarPerfil = async () => {
-    try {
-      const { data } = await AlumnoService.getPerfil();
-      setUsuario(data);
-      return data;
-    } catch {
-      setUsuario(null);
-      return null;
-    }
-  };
+  try {
+    const { data } = await UsuarioService.getPerfil();
+
+    setUsuario(data);
+    return data;
+  } catch (error) {
+    console.error("Error al cargar el perfil:", error);
+    setUsuario(null);
+    return null;
+  }
+};
 
   useEffect(() => {
     setOnUnauthorized(() => setUsuario(null));
@@ -31,14 +33,17 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   const login = async (codigo, password) => {
-    await AuthService.login(codigo, password);
-    const perfil = await cargarPerfil();
-    if (!perfil) {
-      AuthService.logout();
-      throw new Error("SIN_ACCESO");
-    }
-    return perfil;
-  };
+  await AuthService.login(codigo, password);
+
+  const perfil = await cargarPerfil();
+
+  if (!perfil) {
+    AuthService.logout();
+    throw new Error("SIN_ACCESO");
+  }
+
+  return perfil;
+};
 
   const logout = () => {
     AuthService.logout();

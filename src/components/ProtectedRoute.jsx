@@ -1,13 +1,18 @@
 import { Navigate, Outlet, useLocation } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 
-export default function ProtectedRoute() {
+export default function ProtectedRoute({ allowedRoles }) {
   const { usuario, cargando } = useAuth();
-  const location = useLocation();
 
   if (cargando) return <p>Cargando...</p>;
-  return usuario
-    ? <Outlet />
-    : <Navigate to="/" replace state={{ from: location }} />;
-}
 
+  if (!usuario) {
+    return <Navigate to="/" replace />;
+  }
+
+  if (!allowedRoles.includes(usuario.rol)) {
+    return <Navigate to="/sin-acceso" replace />;
+  }
+
+  return <Outlet />;
+}

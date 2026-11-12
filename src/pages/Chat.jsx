@@ -4,7 +4,7 @@ import Nav from '../components/Nav'
 
 function Chat() {
   return (
-    <div className="relative flex w-screen bg-back-class h-screen">
+    <div className="relative flex flex-col bg-back-class  min-w-0">
         <Nav />
 
        <div className="flex w-full mx-auto justify-center items-center">

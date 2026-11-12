@@ -16,13 +16,20 @@ function App() {
         <Routes>
           <Route path="/" element={<Login />} />
 
-          <Route element={<ProtectedRoute />}>
-            <Route path="/student/cursos" element={<ClassAlumno />} />
-            <Route path="/chat" element={<Chat />} />
-            <Route path="/calendario" element={<Calendario />} />
-            <Route path="/ayuda" element={<Ayuda />} />
+          <Route path="/student" element={<ProtectedRoute allowedRoles={["ESTUDIANTE"]} />}>
+            <Route path="cursos" element={<ClassAlumno />} />
+            <Route path="chat" element={<Chat />} />
+            <Route path="calendario" element={<Calendario />} />
+            <Route path="ayuda" element={<Ayuda />} />
+          </Route>
+    
+          <Route path="/teacher" element={<ProtectedRoute allowedRoles={['profesor']}/>}>
+           {/* <Route path="default" element={<OpcionProfesor />} /> */}
           </Route>
 
+          <Route path="/admin" element={<ProtectedRoute allowedRoles={['admin']}/>}>
+           {/* <Route path="default" element={<OpcionAdmin />} /> */}
+          </Route>
         </Routes>
       </BrowserRouter>
     </AuthProvider>
