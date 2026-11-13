@@ -7,32 +7,38 @@ import Ayuda from './pages/Ayuda.jsx'
 import { BrowserRouter, Routes, Route } from "react-router-dom"; 
 import { AuthProvider } from './context/AuthContext.jsx'
 import ProtectedRoute from './components/ProtectedRoute.jsx'
+import Home from './pages/Profesor/Home.jsx'
+import ClassProfesor from './pages/ClassProfesor.jsx'
+import PortalDocente from './pages/PortalDocente.jsx'
 
 function App() {
   
   return (
-    <AuthProvider>
+
       <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Login />} />
+        <AuthProvider>
+            <Routes>
+              <Route path="/" element={<Login />} />
+              <Route path="/student" element={<ProtectedRoute allowedRoles={["ESTUDIANTE"]} />}>
+                <Route path="cursos" element={<ClassAlumno />} />
+                <Route path="chat" element={<Chat />} />
+                <Route path="calendario" element={<Calendario />} />
+                <Route path="ayuda" element={<Ayuda />} />
+              </Route>
+        
+              <Route path="/teacher"  element={<ProtectedRoute allowedRoles={["PROFESOR"]}/>}>
+                <Route index element={<Home />} />
+                <Route path="portal" element={<PortalDocente />}  />
+                <Route path="cursos" element={<ClassProfesor />} />
+              </Route>
 
-          <Route path="/student" element={<ProtectedRoute allowedRoles={["ESTUDIANTE"]} />}>
-            <Route path="cursos" element={<ClassAlumno />} />
-            <Route path="chat" element={<Chat />} />
-            <Route path="calendario" element={<Calendario />} />
-            <Route path="ayuda" element={<Ayuda />} />
-          </Route>
-    
-          <Route path="/teacher" element={<ProtectedRoute allowedRoles={['profesor']}/>}>
-           {/* <Route path="default" element={<OpcionProfesor />} /> */}
-          </Route>
+              <Route path="/admin" element={<ProtectedRoute allowedRoles={['admin']}/>}>
+              {/* <Route path="default" element={<OpcionAdmin />} /> */}
+              </Route>
+            </Routes>
+        </AuthProvider>
 
-          <Route path="/admin" element={<ProtectedRoute allowedRoles={['admin']}/>}>
-           {/* <Route path="default" element={<OpcionAdmin />} /> */}
-          </Route>
-        </Routes>
       </BrowserRouter>
-    </AuthProvider>
   )
 }
 

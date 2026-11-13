@@ -22,7 +22,7 @@ const handleLogin = async (e) => {
     const resultado = await login(codigo, password);
     const destinos = {
       ESTUDIANTE: "/student/cursos",
-      PROFESOR: "/teacher/cursos",
+      PROFESOR: "/teacher",
       ADMIN: "/admin/dashboard",
     };
 
