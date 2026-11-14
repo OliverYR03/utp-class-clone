@@ -8,8 +8,10 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AuthProvider } from './context/AuthContext.jsx'
 import ProtectedRoute from './components/ProtectedRoute.jsx'
 import Home from './pages/Profesor/Home.jsx'
-import ClassProfesor from './pages/ClassProfesor.jsx'
+import ClassProfesor from './pages/Profesor/ClassProfesor.jsx'
 import PortalDocente from './pages/PortalDocente.jsx'
+import ClassProfesorLayout from './pages/Profesor/ClassProfesorLayout.jsx'
+import CursoSeccion from './pages/Seccion/CursoSeccion.jsx'
 
 function App() {
   
@@ -29,7 +31,11 @@ function App() {
               <Route path="/teacher"  element={<ProtectedRoute allowedRoles={["PROFESOR"]}/>}>
                 <Route index element={<Home />} />
                 <Route path="portal" element={<PortalDocente />}  />
-                <Route path="cursos" element={<ClassProfesor />} />
+
+                <Route element={<ClassProfesorLayout />}>
+                  <Route path="cursos" element={<ClassProfesor />} />
+                  <Route path="seccion/:idSeccion" element={<CursoSeccion />} />
+                </Route>
               </Route>
 
               <Route path="/admin" element={<ProtectedRoute allowedRoles={['admin']}/>}>
