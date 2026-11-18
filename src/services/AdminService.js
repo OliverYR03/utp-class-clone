@@ -12,8 +12,8 @@ const AdminService = {
     api.get("/admin/usuarios/profesores", {
       params: { pagina, filas, ordenarPor, ascendente,texto },
     }),
-  updateProfesor: (codigo) => {
-    api.put(`/admin/usuarios/profesores/${codigo}/update`)},
+updateProfesor: (codigo, datos) =>
+  api.put(`/admin/usuarios/profesores/${encodeURIComponent(codigo)}/update`, datos),
     
   newProfesor: (datos) => api.post("/admin/usuarios/profesores/nuevo", datos),
 
