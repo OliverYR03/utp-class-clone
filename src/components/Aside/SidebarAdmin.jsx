@@ -34,7 +34,7 @@ export default function SidebarDocente({ onMenuClick }) {
           "transition-colors focus-visible:outline",
           "focus-visible:outline-2 focus-visible:outline-emerald-500",
           activo
-            ? "ml-[26px] w-[calc(100%-26px)] rounded-l-2xl bg-[#f6faf9] pl-[18px] font-bold text-[#1b1b1b]"
+            ? " w-[calc(100%-26px)] rounded-l-2xl bg-[#f6faf9] pl-[18px] font-bold text-[#1b1b1b]"
             : "border-b border-white/10 text-[#d2d2d2] hover:bg-white/5",
         ].join(" ")}
       >

@@ -23,7 +23,7 @@ const handleLogin = async (e) => {
     const destinos = {
       ESTUDIANTE: "/student/cursos",
       PROFESOR: "/teacher",
-      ADMIN: "/admin/dashboard",
+      ADMIN: "/admin",
     };
 
     const destino = destinos[resultado.rol];
