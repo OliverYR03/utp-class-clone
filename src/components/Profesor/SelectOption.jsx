@@ -1,13 +1,13 @@
-import CardOption from "./cardOption"
+import CardOption from "../Profesor/cardOption.jsx"
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 function SelectOption() {
-    {/*const { usuario} = useAuth();*/}
  const [seleccionado, setSeleccionado] = useState(false);
 const navigate = useNavigate();
  const confirmar = () => {
-  const destinos = {
+  
+    const destinos = {
     Docente: "/teacher/portal",
     Estudiante: "/teacher/cursos",
   };

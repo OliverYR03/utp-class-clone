@@ -1,7 +1,9 @@
+import SelectOption from "./SelectOption"
 
 function PortalAdmin() {
   return (
-    <div>
+    <div>      <SelectOption />
+
 
     </div>
   )
