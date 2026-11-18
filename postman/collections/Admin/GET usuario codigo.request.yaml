@@ -1,0 +1,12 @@
+$kind: http-request
+description: ""
+url: localhost:8080/admin/usuarios/P26000013/info
+method: GET
+body:
+  type: json
+  content: ""
+auth:
+  type: bearer
+  credentials:
+    token: "{{json_web_token_04ul}}"
+order: 3000

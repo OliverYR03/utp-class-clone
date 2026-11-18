@@ -12,6 +12,11 @@ import ClassProfesor from './pages/Profesor/ClassProfesor.jsx'
 import PortalDocente from './pages/PortalDocente.jsx'
 import ClassProfesorLayout from './pages/Profesor/ClassProfesorLayout.jsx'
 import CursoSeccion from './pages/Seccion/CursoSeccion.jsx'
+import PortalAdmin from './pages/Admin/PortalAdmin.jsx'
+import PortalAdminLayout from './pages/Admin/PortalAdminLayout.jsx'
+import PortalAdminCrudProfesores from './pages/Admin/PortalAdminCrudProfesores.jsx'
+import PortalAdminCrudAlumnos from './pages/Admin/PortalAdminCrudAlumnos.jsx'
+
 
 function App() {
   
@@ -38,8 +43,12 @@ function App() {
                 </Route>
               </Route>
 
-              <Route path="/admin" element={<ProtectedRoute allowedRoles={['admin']}/>}>
-              {/* <Route path="default" element={<OpcionAdmin />} /> */}
+              <Route path="/admin" element={<ProtectedRoute allowedRoles={['ADMIN']}/>}>
+                <Route element={<PortalAdminLayout />}>
+                  <Route index element={<PortalAdmin />} />
+                  <Route path="profesores" element={<PortalAdminCrudProfesores /> } />
+                  <Route path="alumnos" element={<PortalAdminCrudAlumnos /> } />
+                </Route>
               </Route>
             </Routes>
         </AuthProvider>

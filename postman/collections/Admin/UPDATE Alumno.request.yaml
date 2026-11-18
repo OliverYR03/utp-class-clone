@@ -1,0 +1,21 @@
+$kind: http-request
+description: ""
+url: localhost:8080/admin/usuarios/A26000001/info
+method: PUT
+body:
+  type: json
+  content: |-
+    {
+            "nombres" : "DEILY"
+    }
+auth:
+  type: bearer
+  credentials:
+    token: "{{json_web_token_0qn0}}"
+settings:
+  protocolVersion: auto
+  strictSSL: false
+  followRedirects: true
+  disableCookies: false
+  maxResponseSize: 52428800
+order: 1000

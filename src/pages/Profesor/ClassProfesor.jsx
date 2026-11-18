@@ -1,7 +1,5 @@
 import {useState, useEffect} from 'react'
 import ProfesorService from '../../services/ProfesorService.js'
-import Nav from "../../components/Nav.jsx";
-import Aside from "../../components/Aside.jsx";
 import { NavLink } from 'react-router-dom';
 
 function ClassProfesor() {

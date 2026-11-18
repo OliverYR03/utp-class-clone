@@ -1,0 +1,16 @@
+$kind: http-request
+description: ""
+url: http://localhost:8080/admin/usuarios/profesores/P26000013/update
+method: PUT
+body:
+  type: json
+  content: "{\r
+
+    \    \"nombres\" : \"Rafael\"\r
+
+    }"
+auth:
+  type: bearer
+  credentials:
+    token: "{{json_web_token_04ul}}"
+order: 4000

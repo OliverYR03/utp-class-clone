@@ -1,0 +1,39 @@
+$kind: http-request
+name: CREATE alumno
+description: ""
+url: http://localhost:8080/admin/usuarios/alumnos/nuevo
+method: POST
+body:
+  type: json
+  content: "{\r
+
+    \  \"codigo\": \"A27000002\",\r
+
+    \  \"nombres\": \"Anal\",\r
+
+    \  \"apellidos\": \"Péreza\",\r
+
+    \  \"dni\": \"73000002\",\r
+
+    \  \"numero\": \"987654321\",\r
+
+    \  \"correo\": \"ana@upp.edu.pe\",\r
+
+    \  \"sexo\": \"F\",\r
+
+    \  \"cumpleanos\": \"2005-03-15\",\r
+
+    \  \"ciclo\": 1,\r
+
+    \  \"campus\": \"Lima Sur\",\r
+
+    \  \"modalidad\": \"PRESENCIAL\",\r
+
+    \  \"carrera\": \"INGENIERIA_SOFTWARE\"\r
+
+    }"
+auth:
+  type: bearer
+  credentials:
+    token: "{{json_web_token_04ul}}"
+order: 5000
