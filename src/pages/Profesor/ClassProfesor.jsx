@@ -6,6 +6,7 @@ function ClassProfesor() {
         const [periodoIsOpen, setPeriodoIsOpen] = useState(false);
         const [secciones, setSecciones] = useState([]);
         const [cargando, setCargando] = useState(true);
+        
      useEffect(() => {
         let activo = true;
         

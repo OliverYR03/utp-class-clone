@@ -8,67 +8,50 @@ import {
   CircleHelp,
   ChevronRight,
 } from "lucide-react";
-
+import { useLocation, useNavigate } from "react-router-dom";
 const opciones = [
-  { label: "Inicio", href: "/admin/home", icon: Home },
+  { label: "Inicio", href: "/admin", icon: Home },
   { label: "Alumnos", href: "/admin/alumnos", icon: BookOpen },
   { label: "Profesores", href: "/admin/profesores", icon: CalendarDays },
-  {
-    label: "Trámites docente",
-    href: "/docente/tramites",
-    icon: Clipboard,
-  },
-  {
-    label: "Espacio docente",
-    href: "/docente/espacio",
-    icon: Aperture,
-  },
 ];
 
-export default function SidebarDocente({
-  rutaActual = "/docente",
-  onMenuClick,
-}) {
-  function renderOpcion({ label, href, icon: Icon }, esAyuda = false) {
-    const activo = rutaActual === href;
+export default function SidebarDocente({ onMenuClick }) {
+  const navigate = useNavigate();
+  const { pathname } = useLocation();
+
+  function renderOpcion({ label, href, icon: Icon }) {
+    const activo = pathname === href;
 
     return (
-      <a
+      <button
         key={href}
-        href={href}
+        type="button"
+        onClick={() => navigate(href)}
         aria-current={activo ? "page" : undefined}
         className={[
-          "group relative flex items-center gap-4",
+          "group relative flex w-full items-center gap-4 text-left",
           "py-6 pl-11 pr-7 text-[18px]",
           "transition-colors focus-visible:outline",
           "focus-visible:outline-2 focus-visible:outline-emerald-500",
           activo
-            ? "ml-[26px] rounded-l-2xl bg-[#f6faf9] pl-[18px] font-bold text-[#1b1b1b]"
-            : "text-[#d2d2d2] hover:bg-white/5",
-          !activo && !esAyuda ? "border-b border-white/10" : "",
+            ? "ml-[26px] w-[calc(100%-26px)] rounded-l-2xl bg-[#f6faf9] pl-[18px] font-bold text-[#1b1b1b]"
+            : "border-b border-white/10 text-[#d2d2d2] hover:bg-white/5",
         ].join(" ")}
       >
         <span
           className={[
             "flex size-8 shrink-0 items-center justify-center rounded-full",
-            activo
-              ? "bg-[#1b1b1b] text-white"
-              : "bg-white text-[#1b1b1b]",
+            activo ? "bg-[#1b1b1b] text-white" : "bg-white text-[#1b1b1b]",
           ].join(" ")}
         >
           <Icon size={17} strokeWidth={1.8} aria-hidden="true" />
         </span>
-
         <span className="flex-1">{label}</span>
-
-        <ChevronRight
-          size={23}
-          strokeWidth={2}
-          aria-hidden="true"
-        />
-      </a>
+        <ChevronRight size={23} strokeWidth={2} aria-hidden="true" />
+      </button>
     );
   }
+
 
   return (
     <aside className="flex min-h-screen w-[314px] shrink-0 flex-col bg-[#1b1b1b]">
