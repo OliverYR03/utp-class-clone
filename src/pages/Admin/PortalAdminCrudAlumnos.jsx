@@ -8,6 +8,7 @@ function PortalAdminCrudAlumnos() {
     campo: "nombres",
     ascendente: true,
     });
+    const [texto, setTexto] = useState("");
     const [revisionListado, setRevisionListado] = useState(0);
     const [alumnos, setAlumnos] = useState([]);
     const [pagina,setPagina] = useState(1);
@@ -47,7 +48,8 @@ function PortalAdminCrudAlumnos() {
                 pagina,
                 filas,
                 orden.campo,
-                orden.ascendente
+                orden.ascendente,
+                texto.trim()
             );
 
             if (activo) {
@@ -71,7 +73,7 @@ function PortalAdminCrudAlumnos() {
         return () => {
             activo = false;
         };
-    }, [pagina, filas, orden.campo, orden.ascendente, revisionListado]);
+    }, [pagina, filas, orden.campo, orden.ascendente, revisionListado, texto]);
 
 async function confirmarBorrado(alumno) {
         const { isConfirmed } = await alerta.fire({
@@ -348,25 +350,37 @@ async function agregarAlumno() {
   return (
     <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
         <div className="flex items-center justify-between border-b border-slate-100 px-6 py-5">
-            <div>
+            <div className=''>
             <h2 className="text-lg font-bold text-slate-800">
                 Alumnos
             </h2>
             <p className="mt-1 text-sm text-slate-500">
                 Listado de estudiantes registrados
             </p>
-            
             </div>
-            <div className="flex flex-col-reverse gap-2 ">
-                <span className="rounded-full bg-emerald-50 px-3 py-1 text-sm font-semibold text-emerald-700">
-                    {totalRegistros} registros
-                </span>
-                <button onClick={agregarAlumno}  className="rounded-lg bg-emerald-700 px-4 py-2 text-sm font-semibold text-white hover:bg-emerald-800">
+            <span className="rounded-full bg-emerald-50 px-3 py-1 text-sm font-semibold text-emerald-700">
+                {totalRegistros} registros
+            </span>
+            </div>
+            <nav className='flex items-center justify-between border-b border-slate-100 px-6 py-5'>
+            <div className="">
+                <label htmlFor="buscar">Buscar: </label>
+                <input
+                type="search"
+                className='rounded-full border p-2'
+                aria-label="Buscar profesores"
+                placeholder="Nombre, apellido, código o DNI"
+                value={texto}
+                onChange={(event) => {
+                    setTexto(event.target.value);
+                    setPagina(1);
+                }}
+                />
+            </div>
+            <button onClick={agregarAlumno}  className="rounded-lg bg-emerald-700 px-4 py-2 text-sm font-semibold text-white hover:bg-emerald-800">
                     AGREGAR
-                </button>
-            </div>
-            
-        </div>
+            </button>
+        </nav>
 
         <div className="overflow-x-auto">
             <table className="w-full min-w-[1100px] border-collapse text-left text-sm">

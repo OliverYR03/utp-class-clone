@@ -8,6 +8,7 @@ function PortalAdminCrudProfesores() {
     campo: "nombres",
     ascendente: true,
     });
+    const [texto, setTexto] = useState("");
     const [revisionListado, setRevisionListado] = useState(0);
     const [profesores, setProfesores] = useState([]);
     const [pagina,setPagina] = useState(1);
@@ -46,14 +47,15 @@ function PortalAdminCrudProfesores() {
                 pagina,
                 filas,
                 orden.campo,
-                orden.ascendente
-            );
+                orden.ascendente,
+                texto.trim()
+                );
 
-            if (activo) {
+                if (activo) {
                 setProfesores(data.profesores);
                 setTotalPaginas(data.totalPaginas);
                 setTotalRegistros(data.totalRegistros);
-            }
+                }
             } catch {
             if (activo) {
                 setError("No se pudo obtener los profesores.");
@@ -70,7 +72,7 @@ function PortalAdminCrudProfesores() {
         return () => {
             activo = false;
         };
-    }, [pagina, filas, orden.campo, orden.ascendente, revisionListado]);
+    }, [pagina, filas, orden.campo, orden.ascendente, revisionListado, texto]);
 
     async function editarProfesor(profesor) {
         const { isConfirmed, value: cambios } = await Swal.fire({
@@ -318,16 +320,29 @@ function PortalAdminCrudProfesores() {
             </p>
             
             </div>
-            <div className="flex flex-col gap-2 ">
-                 <button onClick={agregarProfesor}  className="rounded-lg bg-emerald-700 px-4 py-2 text-sm font-semibold text-white hover:bg-emerald-800">
-                    AGREGAR
-                </button>
-                <span className="rounded-full bg-emerald-50 px-3 py-1 text-sm font-semibold text-emerald-700">
-                    {totalRegistros} registros
-                </span>
-            </div>
-            
+            <span className="rounded-full bg-emerald-50 px-3 py-1 text-sm font-semibold text-emerald-700">
+                {totalRegistros} registros
+            </span>
         </div>
+        <nav className='flex items-center justify-between border-b border-slate-100 px-6 py-5'>
+            <div className="">
+                <label htmlFor="buscar">Buscar: </label>
+                <input
+                type="search"
+                className='rounded-full border-0.5 p-2'
+                aria-label="Buscar profesores"
+                placeholder="Nombre, apellido, código o DNI"
+                value={texto}
+                onChange={(event) => {
+                    setTexto(event.target.value);
+                    setPagina(1);
+                }}
+                />
+            </div>
+            <button onClick={agregarProfesor}  className="rounded-lg bg-emerald-700 px-4 py-2 text-sm font-semibold text-white hover:bg-emerald-800">
+                    AGREGAR
+            </button>
+        </nav>
         <div className="overflow-x-auto">
             <table className="w-full min-w-[1100px] table-auto border-collapse text-left text-sm">
 

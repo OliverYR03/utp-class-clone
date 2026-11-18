@@ -6,10 +6,11 @@ const AdminService = {
     pagina = 1,
     filas = 20,
     ordenarPor = "apellidos",
-    ascendente = true
+    ascendente = true,
+    texto = ""
   ) =>
     api.get("/admin/usuarios/profesores", {
-      params: { pagina, filas, ordenarPor, ascendente },
+      params: { pagina, filas, ordenarPor, ascendente,texto },
     }),
   updateProfesor: (codigo) => {
     api.put(`/admin/usuarios/profesores/${codigo}/update`)},
@@ -22,10 +23,11 @@ const AdminService = {
   pagina = 1,
   filas = 20,
   ordenarPor = "apellidos",
-  ascendente = true
+  ascendente = true,
+  texto = ""
 ) =>
   api.get("/admin/usuarios/alumnos", {
-    params: { pagina, filas, ordenarPor, ascendente },
+    params: { pagina, filas, ordenarPor, ascendente, texto },
   }),
   updateAlumno: (codigo, datos) =>
      api.put(`/admin/usuarios/alumnos/${encodeURIComponent(codigo)}/update`, datos),
